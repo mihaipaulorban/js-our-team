@@ -9,7 +9,7 @@ const teamMembers = [];
 let member1 = {
     nome: "Wayne Bernet",
     ruolo: "Founder & CEO",
-    foto: "wayne-barnett-founder-ceo.jpg"
+    foto: "img/wayne-barnett-founder-ceo.jpg"
 }
 
 teamMembers.push(member1);
@@ -18,7 +18,7 @@ teamMembers.push(member1);
 let member2 = {
     nome: "Angela Caroll",
     ruolo: "Chief Editor",
-    foto: "angela-caroll-chief-editor.jpg"
+    foto: "img/angela-caroll-chief-editor.jpg"
 }
 
 teamMembers.push(member2);
@@ -27,7 +27,7 @@ teamMembers.push(member2);
 let member3 = {
     nome: "Walter Gordon",
     ruolo: "Office Manager",
-    foto: "walter-gordon-office-manager.jpg"
+    foto: "img/walter-gordon-office-manager.jpg"
 }
 
 teamMembers.push(member3);
@@ -36,7 +36,7 @@ teamMembers.push(member3);
 let member4 = {
     nome: "Angela Lopez",
     ruolo: "Social Media Manager",
-    foto: "angela-lopez-social-media-manager.jpg"
+    foto: "img/angela-lopez-social-media-manager.jpg"
 }
 
 teamMembers.push(member4);
@@ -45,7 +45,7 @@ teamMembers.push(member4);
 let member5 = {
     nome: "Scott Estrada",
     ruolo: "Developer",
-    foto: "scott-estrada-developer.jpg"
+    foto: "img/scott-estrada-developer.jpg"
 }
 
 teamMembers.push(member5);
@@ -54,9 +54,38 @@ teamMembers.push(member5);
 let member6 = {
     nome: "Barbara Ramos",
     ruolo: "Graphic Designer",
-    foto: "barbara-ramos-graphic-designer.jpg"
+    foto: "img/barbara-ramos-graphic-designer.jpg"
 }
 
 teamMembers.push(member6);
 
 console.log (teamMembers)
+
+let teamContainer = document.getElementById("team-container");
+
+// Per ogni membro del team nell'array teamMembers:
+teamMembers.forEach(member => {
+  // Genera un div per ogni membro
+  let memberDiv = document.createElement("div");
+  memberDiv.classList.add("card");
+
+  // Genera elementi <p> per nome e ruolo
+  let nameParagraph = document.createElement("p");
+  nameParagraph.textContent = `Nome: ${member.nome}`;
+
+  let roleParagraph = document.createElement("p");
+  roleParagraph.textContent = `Ruolo: ${member.ruolo}`;
+
+  // Genera un elemento immagine <img> per la foto
+  let imgElement = document.createElement("img");
+  imgElement.src = member.foto;
+  imgElement.alt = member.nome; // Assumendo che il nome possa essere usato come testo alternativo
+
+  // Aggiunge i <p> e l'<img> al div del membro
+  memberDiv.appendChild(nameParagraph);
+  memberDiv.appendChild(roleParagraph);
+  memberDiv.appendChild(imgElement);
+
+  // Aggiunge il div del membro al contenitore del team
+  teamContainer.appendChild(memberDiv);
+});
