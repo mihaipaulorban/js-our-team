@@ -63,29 +63,52 @@ console.log (teamMembers)
 
 let teamContainer = document.getElementById("team-container");
 
-// Per ogni membro del team nell'array teamMembers:
+// Creiamo un div con la classe row per contenere le card dei membri del team
+let row = document.createElement("div");
+row.classList.add("row");
+
 teamMembers.forEach(member => {
-  // Genera un div per ogni membro
+  // Generiamo un div per ogni membro e aggiungiamo le classi col e col-md-4 di Bootstrap
   let memberDiv = document.createElement("div");
-  memberDiv.classList.add("card");
+  memberDiv.classList.add("col", "col-md-4", "mb-4");
 
-  // Genera elementi <p> per nome e ruolo
-  let nameParagraph = document.createElement("p");
-  nameParagraph.textContent = `Nome: ${member.nome}`;
+  // Aggiungiamo la classe card di Bootstrap per creare la card
+  let card = document.createElement("div");
+  card.classList.add("card");
 
-  let roleParagraph = document.createElement("p");
-  roleParagraph.textContent = `Ruolo: ${member.ruolo}`;
+  // Aggiungiamo un div per il corpo della card e la classe card-body di Bootstrap
+  let cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
 
-  // Genera un elemento immagine <img> per la foto
+  // Aggiungiamo un elemento immagine <img> per la foto e le classi di Bootstrap
   let imgElement = document.createElement("img");
   imgElement.src = member.foto;
-  imgElement.alt = member.nome; // Assumendo che il nome possa essere usato come testo alternativo
+  imgElement.alt = member.nome;
+  imgElement.classList.add("card-img-top", "img-fluid");
 
-  // Aggiunge i <p> e l'<img> al div del membro
-  memberDiv.appendChild(nameParagraph);
-  memberDiv.appendChild(roleParagraph);
-  memberDiv.appendChild(imgElement);
+  // Generiamo elementi <p> per il nome e il ruolo
+  let nameParagraph = document.createElement("p");
+  nameParagraph.textContent = member.nome;
+  nameParagraph.classList.add("card-text", "fw-bold", "text-center", "text-truncate", "mt-3", "fs-4");
 
-  // Aggiunge il div del membro al contenitore del team
-  teamContainer.appendChild(memberDiv);
+  let roleParagraph = document.createElement("p");
+  roleParagraph.textContent = member.ruolo;
+  roleParagraph.classList.add("card-text", "text-center", "text-truncate");
+
+  // Aggiungiamo l'immagine, il nome e il ruolo al corpo della card
+  cardBody.appendChild(imgElement);
+  cardBody.appendChild(nameParagraph);
+  cardBody.appendChild(roleParagraph);
+
+  // Aggiungiamo il corpo della card al div della card
+  card.appendChild(cardBody);
+
+  // Aggiungiamo la card al div del membro
+  memberDiv.appendChild(card);
+
+  // Aggiungiamo il div del membro al div row
+  row.appendChild(memberDiv);
 });
+
+// Aggiungiamo il div row al contenitore del team
+teamContainer.appendChild(row);
