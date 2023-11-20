@@ -84,7 +84,7 @@ teamMembers.forEach(member => {
   let imgElement = document.createElement("img");
   imgElement.src = member.foto;
   imgElement.alt = member.nome;
-  imgElement.classList.add("card-img-top", "img-fluid");
+  imgElement.classList.add("card-img-top", "img-fluid", "rounded-1");
 
   // Generiamo elementi <p> per il nome e il ruolo
   let nameParagraph = document.createElement("p");
